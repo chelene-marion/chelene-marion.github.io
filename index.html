@@ -6,7 +6,13 @@
   <title>Your Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<script>
+  console.log("Theme debug:", {
+    savedTheme: localStorage.getItem('theme'),
+    isDark: document.documentElement.classList.contains('dark-mode')
+  });
+</script>
+  <body>
   <header>
     <h1>Your Name</h1>
     <p>Web Developer & Designer</p>
@@ -41,28 +47,23 @@
     </section>
   </main>
 
-  <script>
-    // ===== THEME TOGGLE (FIXED TO OVERRIDE SYSTEM PREF) =====
-    const toggle = document.getElementById('darkModeToggle');
-    const savedTheme = localStorage.getItem('theme');
+<script>
+  // Force light mode first, then allow toggle to override
+  document.documentElement.classList.remove('dark-mode');
+  
+  const toggle = document.getElementById('darkModeToggle');
+  toggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark-mode');
+    localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+    toggle.textContent = document.documentElement.classList.contains('dark-mode') ? 
+      'Switch to Light Mode' : 'Switch to Dark Mode';
+  });
 
-    // Set initial theme (ignore system preference if user already chose one)
-    const currentTheme = savedTheme ? savedTheme : 'light';
-    document.documentElement.classList.toggle('dark-mode', currentTheme === 'dark');
-    updateButtonText();
-
-    // Toggle theme
-    toggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark-mode');
-      const isDark = document.documentElement.classList.contains('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateButtonText();
-    });
-
-    function updateButtonText() {
-      const isDark = document.documentElement.classList.contains('dark-mode');
-      toggle.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-    }
-  </script>
+  // Apply saved theme on load
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+    toggle.textContent = 'Switch to Light Mode';
+  }
+</script>
 </body>
 </html>
