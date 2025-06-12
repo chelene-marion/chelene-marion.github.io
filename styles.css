@@ -1,50 +1,110 @@
-/* ===== Restored Clean Styles ===== */
+/* ===== Modern Portfolio Styles ===== */
 :root {
-  /* Original color palette (fixed contrast) */
-  --primary: #2a4365;       /* Deep blue */
-  --secondary: #e2e8f0;     /* Light gray */
-  --accent: #c53030;        /* Original red */
-  --text: #1a202c;          /* Dark text (readable) */
-  --bg: #ffffff;            /* Pure white */
-  --card-bg: #ffffff;       /* White cards */
+  /* Updated color palette with better harmony */
+  --primary: #2563eb;       /* Vibrant blue */
+  --secondary: #94a3b8;     /* Soft gray */
+  --accent: #ef4444;        /* Energetic red */
+  --text: #1e293b;          /* Dark text */
+  --bg: #f8fafc;            /* Off-white */
+  --card-bg: #ffffff;       /* Pure white cards */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark-mode {
-  /* Dark mode (high contrast) */
-  --primary: #63b3ed;
-  --secondary: #4a5568;
-  --accent: #feb2b2;
-  --text: #e2e8f0;          /* Light text */
-  --bg: #1a202c;            /* Dark background */
-  --card-bg: #2d3748;       /* Dark cards */
+  /* Dark mode palette */
+  --primary: #60a5fa;
+  --secondary: #475569;
+  --accent: #fca5a5;
+  --text: #e2e8f0;
+  --bg: #0f172a;            /* Deep navy */
+  --card-bg: #1e293b;       /* Dark cards */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
 }
 
-/* ===== Original Fonts/Spacing ===== */
+/* ===== Base Styles ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   color: var(--text);
   background-color: var(--bg);
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
+  transition: var(--transition);
 }
 
-/* ===== Header (Restored) ===== */
+/* ===== Background Layer ===== */
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(239, 68, 68, 0.08) 0%, transparent 30%);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.dark-mode .gradient-bg {
+  opacity: 0.3;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(96, 165, 250, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(252, 165, 165, 0.05) 0%, transparent 30%);
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ===== Header ===== */
 header {
   text-align: center;
-  margin-bottom: 2rem;
+  padding: 4rem 0 3rem;
+  position: relative;
 }
+
 h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
   margin: 0.5rem 0;
-  color: var(--primary);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
 }
+
 .subtitle {
-  font-size: 1.2rem;
-  color: var(--text);
-  opacity: 0.8;
+  font-size: 1.25rem;
+  color: var(--secondary);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  bottom: -10px;
+  left: 25%;
+  border-radius: 3px;
 }
 
 /* ===== Navigation ===== */
@@ -52,35 +112,224 @@ nav {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
+  flex-wrap: wrap;
 }
+
 nav a {
-  color: var(--accent);
-  font-weight: 500;
+  color: var(--text);
+  font-weight: 600;
   text-decoration: none;
+  position: relative;
+  padding: 0.25rem 0;
 }
 
-/* ===== Project Cards (Original Style) ===== */
-.project-card {
-  background: var(--card-bg);
-  border: 1px solid var(--secondary);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-.project-card h3 {
-  color: var(--primary);
-  margin-top: 0;
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
 }
 
-/* ===== Dark Mode Toggle (Simple) ===== */
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== Dark Mode Toggle ===== */
 #darkModeToggle {
   background: var(--accent);
   color: white;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  font-weight: 500;
-  margin: 1rem auto;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  margin: 1.5rem auto;
   display: block;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+#darkModeToggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.2);
+}
+
+.dark-mode #darkModeToggle {
+  box-shadow: 0 4px 12px rgba(252, 165, 165, 0.25);
+}
+
+/* ===== Projects Section ===== */
+section {
+  padding: 3rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--secondary);
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .project-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3 {
+  color: var(--primary);
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.project-card p {
+  color: var(--text);
+  opacity: 0.9;
+  margin: 1rem 0;
+}
+
+/* ===== Buttons ===== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button svg {
+  transition: transform 0.3s;
+}
+
+.button:hover svg {
+  transform: translateX(3px);
+}
+
+.dark-mode .button:hover {
+  box-shadow: 0 6px 12px rgba(96, 165, 250, 0.3);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  header {
+    padding: 3rem 0 2rem;
+  }
+  
+  nav {
+    gap: 1rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
