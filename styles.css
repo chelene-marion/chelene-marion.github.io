@@ -5,6 +5,29 @@
   --accent: #c53030;    /* Warm red (for links/buttons) */
   --text: #1a202c;      /* Dark gray for readability */
   --light: #f7fafc;     /* Off-white background */
+  :root {
+  /* Light mode colors (default) */
+  --primary: #2a4365;
+  --secondary: #e2e8f0;
+  --accent: #c53030;
+  --text: #1a202c;
+  --light: #f7fafc;
+  --bg: white;
+  --card-bg: white;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #63b3ed;
+    --secondary: #4a5568;
+    --accent: #feb2b2;
+    --text: #e2e8f0;
+    --light: #1a202c;
+    --bg: #2d3748;
+    --card-bg: #4a5568;
+  }
+}
 }
 
 body {
