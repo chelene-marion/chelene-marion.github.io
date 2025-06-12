@@ -1,26 +1,24 @@
 /* ===== Base Styles ===== */
 :root {
   /* Light mode colors (default) */
-  --primary: #2a4365;  /* Deep blue (professional) */
-  --secondary: #e2e8f0; /* Light gray */
-  --accent: #c53030;    /* Warm red (for links/buttons) */
-  --text: #1a202c;      /* Dark gray for readability */
-  --light: #f7fafc;     /* Off-white background */
-  --bg: white;          /* Main background */
-  --card-bg: white;     /* Project card background */
+  --primary: #2a4365;
+  --secondary: #e2e8f0;
+  --accent: #c53030;
+  --text: #1a202c;
+  --light: #f7fafc;
+  --bg: white;
+  --card-bg: white;
 }
 
 /* Dark mode colors */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #63b3ed;
-    --secondary: #4a5568;
-    --accent: #feb2b2;
-    --text: #e2e8f0;
-    --light: #1a202c;
-    --bg: #2d3748;
-    --card-bg: #4a5568;
-  }
+.dark-mode {
+  --primary: #63b3ed;
+  --secondary: #4a5568;
+  --accent: #feb2b2;
+  --text: #e2e8f0;
+  --light: #1a202c;
+  --bg: #2d3748;
+  --card-bg: #4a5568;
 }
 
 body {
@@ -31,6 +29,7 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
+  transition: background-color 0.3s, color 0.3s; /* Smooth theme transition */
 }
 
 /* ===== Typography ===== */
@@ -38,6 +37,7 @@ h1, h2, h3 {
   font-weight: 600;
   margin-top: 1.5em;
   color: var(--primary);
+  transition: color 0.3s;
 }
 
 h1 {
@@ -46,73 +46,16 @@ h1 {
   padding-bottom: 0.5rem;
 }
 
-h2 {
-  font-size: 1.8rem;
-}
-
 a {
   color: var(--accent);
-  text-decoration: none;
   transition: color 0.2s;
 }
 
 a:hover {
   color: var(--primary);
-  text-decoration: underline;
-}
-
-/* ===== Layout ===== */
-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.project-card {
-  border: 1px solid var(--secondary);
-  border-radius: 8px;
-  padding: 1.5rem;
-  background: var(--card-bg);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== Components ===== */
-.button {
-  display: inline-block;
-  background: var(--accent);
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  margin-top: 1rem;
-}
-
-.button:hover {
-  background: var(--primary);
-  text-decoration: none;
-}
-
-/* ===== Mobile Responsiveness ===== */
-@media (max-width: 768px) {
-  body {
-    padding: 1rem;
-  }
-  
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Dark Mode Toggle Button */
 #darkModeToggle {
   background: var(--accent);
   color: white;
@@ -128,12 +71,17 @@ header {
   transform: scale(1.05);
 }
 
-/* Forced dark mode class */
-.dark-mode {
-  --primary: #63b3ed !important;
-  --secondary: #4a5568 !important;
-  --accent: #feb2b2 !important;
-  --text: #e2e8f0 !important;
-  --bg: #2d3748 !important;
-  --card-bg: #4a5568 !important;
+.project-card {
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  transition: all 0.3s;
+}
+
+/* ===== Mobile Responsiveness ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
 }
