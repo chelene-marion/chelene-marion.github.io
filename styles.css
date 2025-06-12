@@ -1,106 +1,91 @@
-/* ===== Base Styles (Unchanged) ===== */
-:root {
-  --primary: #2a4365;
-  --secondary: #e2e8f0;
-  --accent: #c53030;
-  --text: #1a202c;
-  --bg: white;
-  --card-bg: white;
-}
-
-.dark-mode {
-  --primary: #63b3ed;
-  --secondary: #4a5568;
-  --accent: #feb2b2;
-  --text: #e2e8f0;
-  --bg: #2d3748;
-  --card-bg: #4a5568;
-}
-
+/* ===== Gradient Background ===== */
 body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.6;
   color: var(--text);
-  background-color: var(--bg);
+}
+
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  z-index: -1;
+  transition: background 0.5s ease;
+}
+
+.dark-mode .gradient-bg {
+  background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+}
+
+/* ===== Centered Container ===== */
+.container {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ===== Project Cards (Fancy Upgrades) ===== */
+/* ===== Glass Morphism Cards ===== */
+.project-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.dark-mode .project-card {
+  background: rgba(30, 41, 59, 0.3);
+  border: 1px solid rgba(74, 85, 104, 0.5);
+}
+
+/* ===== Header & Text Centering ===== */
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* ===== Project Grid (Centered) ===== */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin: 3rem 0;
+  width: 100%;
+  justify-items: center;
 }
 
-.project-card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid var(--secondary);
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.card-content {
-  padding: 1.8rem;
-}
-
-.project-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
-  color: var(--primary);
-}
-
-.project-card p {
-  margin-bottom: 1.5rem;
-  color: var(--text);
-  opacity: 0.9;
-}
-
-/* ===== Buttons (Animated + Icon) ===== */
+/* ===== Glassy Buttons ===== */
 .button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--accent);
-  color: white;
-  padding: 0.7rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(197, 48, 48, 0.8);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.button:hover {
-  background: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.button svg {
-  transition: transform 0.3s ease;
-}
-
-.button:hover svg {
-  transform: translateX(3px);
-}
-
-/* ===== Dark Mode Toggle Button ===== */
-#darkModeToggle {
-  /* Your existing toggle styles */
+.dark-mode .button {
+  background: rgba(254, 178, 178, 0.8);
 }
 
 /* ===== Mobile Responsiveness ===== */
 @media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
   .project-grid {
     grid-template-columns: 1fr;
   }
