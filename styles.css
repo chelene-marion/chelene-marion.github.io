@@ -1,127 +1,80 @@
 /* ===== Modern Base Styles ===== */
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-  color: var(--text);
-  background-attachment: fixed;
+:root {
+  /* Light mode (updated for contrast) */
+  --primary: #1a1a1a;       /* Near-black text */
+  --secondary: #e0e0e0;     /* Light gray border */
+  --accent: #ff6b35;        /* New: Vibrant orange */
+  --text: #333333;          /* Dark gray text */
+  --bg: #f8f9fa;            /* Light gray background */
+  --card-bg: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
 }
 
+.dark-mode {
+  /* Dark mode */
+  --primary: #f0f0f0;       /* Near-white text */
+  --secondary: #4a4a4a;     /* Dark gray border */
+  --accent: #ff8c5a;        /* Lighter orange */
+  --text: #e0e0e0;          /* Light gray text */
+  --bg: #121212;            /* Near-black background */
+  --card-bg: rgba(30, 30, 30, 0.9); /* Semi-transparent dark */
+}
+
+/* ===== Gradient Background (Restored) ===== */
 .gradient-bg {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  z-index: -1;
+  transition: background 0.5s ease;
 }
 .dark-mode .gradient-bg {
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 100%);
 }
 
-/* ===== Centered Container ===== */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-}
-
-/* ===== Sleek Header ===== */
-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin: 0.5rem 0;
-  letter-spacing: -0.05em;
-}
-.subtitle {
-  font-size: 1.1rem;
-  color: var(--text);
-  opacity: 0.8;
-  margin-bottom: 1.5rem;
-}
-
-/* ===== Minimal Navigation ===== */
-nav {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  margin: 1.5rem 0;
-}
-nav a {
-  color: var(--accent);
-  font-weight: 500;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-nav a:hover {
-  opacity: 0.8;
-}
-
-/* ===== Refined Project Cards ===== */
-.project-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 1.8rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.dark-mode .project-card {
-  background: rgba(30, 41, 59, 0.5);
-  border-color: rgba(74, 85, 104, 0.4);
-}
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* ===== Elegant Buttons ===== */
-.button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+/* ===== Emoji Toggle Button ===== */
+#darkModeToggle {
   background: var(--accent);
   color: white;
-  padding: 0.7rem 1.4rem;
+  border: none;
+  padding: 0.8rem 1.5rem;
   border-radius: 8px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-.button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* ===== Dark Mode Toggle ===== */
-#darkModeToggle {
-  background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
-  font-weight: 500;
-  margin: 1rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto;
+  transition: all 0.3s;
 }
 #darkModeToggle:hover {
-  background: rgba(197, 48, 48, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+#darkModeToggle::before {
+  content: "☀️"; /* Sun emoji for light mode */
+}
+.dark-mode #darkModeToggle::before {
+  content: "🌙"; /* Moon emoji for dark mode */
 }
 
-/* ===== Pro Typography ===== */
-h2 {
-  font-size: 1.8rem;
-  margin: 2.5rem 0 1.5rem;
-  font-weight: 600;
-}
-h3 {
-  font-size: 1.4rem;
-  margin: 0 0 0.8rem;
-  font-weight: 600;
-}
-p {
-  margin: 0 0 1.2rem;
-  opacity: 0.9;
-  line-height: 1.7;
+/* ===== Card Styles (Fixed Contrast) ===== */
+.project-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--secondary);
+  color: var(--text);
+  /* Rest of your card styles... */
 }
 
-/* ===== Mobile Optimization ===== */
-@media (max-width: 640px) {
-  h1 { font-size: 2.2rem; }
-  .container { padding: 1.5rem 1rem; }
+/* ===== Orange Accent ===== */
+a, .button, nav a:hover {
+  color: var(--accent);
+}
+.button {
+  background: var(--accent);
+  /* Rest of your button styles... */
 }
