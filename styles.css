@@ -1,80 +1,86 @@
-/* ===== Modern Base Styles ===== */
+/* ===== Restored Clean Styles ===== */
 :root {
-  /* Light mode (updated for contrast) */
-  --primary: #1a1a1a;       /* Near-black text */
-  --secondary: #e0e0e0;     /* Light gray border */
-  --accent: #ff6b35;        /* New: Vibrant orange */
-  --text: #333333;          /* Dark gray text */
-  --bg: #f8f9fa;            /* Light gray background */
-  --card-bg: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  /* Original color palette (fixed contrast) */
+  --primary: #2a4365;       /* Deep blue */
+  --secondary: #e2e8f0;     /* Light gray */
+  --accent: #c53030;        /* Original red */
+  --text: #1a202c;          /* Dark text (readable) */
+  --bg: #ffffff;            /* Pure white */
+  --card-bg: #ffffff;       /* White cards */
 }
 
 .dark-mode {
-  /* Dark mode */
-  --primary: #f0f0f0;       /* Near-white text */
-  --secondary: #4a4a4a;     /* Dark gray border */
-  --accent: #ff8c5a;        /* Lighter orange */
-  --text: #e0e0e0;          /* Light gray text */
-  --bg: #121212;            /* Near-black background */
-  --card-bg: rgba(30, 30, 30, 0.9); /* Semi-transparent dark */
+  /* Dark mode (high contrast) */
+  --primary: #63b3ed;
+  --secondary: #4a5568;
+  --accent: #feb2b2;
+  --text: #e2e8f0;          /* Light text */
+  --bg: #1a202c;            /* Dark background */
+  --card-bg: #2d3748;       /* Dark cards */
 }
 
-/* ===== Gradient Background (Restored) ===== */
-.gradient-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-  z-index: -1;
-  transition: background 0.5s ease;
-}
-.dark-mode .gradient-bg {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 100%);
+/* ===== Original Fonts/Spacing ===== */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-/* ===== Emoji Toggle Button ===== */
+/* ===== Header (Restored) ===== */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: var(--primary);
+}
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* ===== Navigation ===== */
+nav {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+nav a {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* ===== Project Cards (Original Style) ===== */
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.project-card h3 {
+  color: var(--primary);
+  margin-top: 0;
+}
+
+/* ===== Dark Mode Toggle (Simple) ===== */
 #darkModeToggle {
   background: var(--accent);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1.5rem auto;
-  transition: all 0.3s;
-}
-#darkModeToggle:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-}
-#darkModeToggle::before {
-  content: "☀️"; /* Sun emoji for light mode */
-}
-.dark-mode #darkModeToggle::before {
-  content: "🌙"; /* Moon emoji for dark mode */
-}
-
-/* ===== Card Styles (Fixed Contrast) ===== */
-.project-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--secondary);
-  color: var(--text);
-  /* Rest of your card styles... */
-}
-
-/* ===== Orange Accent ===== */
-a, .button, nav a:hover {
-  color: var(--accent);
-}
-.button {
-  background: var(--accent);
-  /* Rest of your button styles... */
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 500;
+  margin: 1rem auto;
+  display: block;
 }
