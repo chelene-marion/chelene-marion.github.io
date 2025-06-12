@@ -1,19 +1,13 @@
 /* ===== Base Styles ===== */
 :root {
+  /* Light mode colors (default) */
   --primary: #2a4365;  /* Deep blue (professional) */
   --secondary: #e2e8f0; /* Light gray */
   --accent: #c53030;    /* Warm red (for links/buttons) */
   --text: #1a202c;      /* Dark gray for readability */
   --light: #f7fafc;     /* Off-white background */
-  :root {
-  /* Light mode colors (default) */
-  --primary: #2a4365;
-  --secondary: #e2e8f0;
-  --accent: #c53030;
-  --text: #1a202c;
-  --light: #f7fafc;
-  --bg: white;
-  --card-bg: white;
+  --bg: white;          /* Main background */
+  --card-bg: white;     /* Project card background */
 }
 
 /* Dark mode colors */
@@ -28,13 +22,12 @@
     --card-bg: #4a5568;
   }
 }
-}
 
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   color: var(--text);
-  background-color: var(--light);
+  background-color: var(--bg);
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
@@ -85,7 +78,7 @@ header {
   border: 1px solid var(--secondary);
   border-radius: 8px;
   padding: 1.5rem;
-  background: white;
+  background: var(--card-bg);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
