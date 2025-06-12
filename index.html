@@ -4,36 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Portfolio</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <h1>Your Name</h1>
+    <p>Web Developer & Designer</p>
     <button id="darkModeToggle">Switch to Dark Mode</button>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <!-- Rest of your portfolio content here -->
   <main>
-    <section>
-      <h2>Projects</h2>
+    <section id="projects">
+      <h2>My Projects</h2>
       <div class="project-grid">
-        <!-- Project cards go here -->
+        <div class="project-card">
+          <h3>Project 1</h3>
+          <p>Description of your project.</p>
+          <a href="#" class="button">View Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Project 2</h3>
+          <p>Description of your project.</p>
+          <a href="#" class="button">View Project</a>
+        </div>
       </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Your bio here...</p>
     </section>
   </main>
 
   <script>
-    // Theme Toggle Logic
+    // ===== THEME TOGGLE (FIXED TO OVERRIDE SYSTEM PREF) =====
     const toggle = document.getElementById('darkModeToggle');
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    // Set initial theme
-    const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    // Set initial theme (ignore system preference if user already chose one)
+    const currentTheme = savedTheme ? savedTheme : 'light';
     document.documentElement.classList.toggle('dark-mode', currentTheme === 'dark');
     updateButtonText();
 
-    // Toggle theme on button click
+    // Toggle theme
     toggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark-mode');
       const isDark = document.documentElement.classList.contains('dark-mode');
@@ -41,7 +59,6 @@
       updateButtonText();
     });
 
-    // Update button text dynamically
     function updateButtonText() {
       const isDark = document.documentElement.classList.contains('dark-mode');
       toggle.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
