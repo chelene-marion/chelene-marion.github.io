@@ -1,22 +1,20 @@
 /* ===== Base Styles ===== */
 :root {
-  /* Light mode colors (default) */
+  /* Light mode (default) */
   --primary: #2a4365;
   --secondary: #e2e8f0;
   --accent: #c53030;
   --text: #1a202c;
-  --light: #f7fafc;
   --bg: white;
   --card-bg: white;
 }
 
-/* Dark mode colors */
 .dark-mode {
+  /* Dark mode */
   --primary: #63b3ed;
   --secondary: #4a5568;
   --accent: #feb2b2;
   --text: #e2e8f0;
-  --light: #1a202c;
   --bg: #2d3748;
   --card-bg: #4a5568;
 }
@@ -26,36 +24,62 @@ body {
   line-height: 1.6;
   color: var(--text);
   background-color: var(--bg);
-  max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
   padding: 2rem;
-  transition: background-color 0.3s, color 0.3s; /* Smooth theme transition */
+  transition: all 0.3s ease;
 }
 
-/* ===== Typography ===== */
-h1, h2, h3 {
-  font-weight: 600;
-  margin-top: 1.5em;
-  color: var(--primary);
-  transition: color 0.3s;
+/* ===== Header/Nav ===== */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-h1 {
-  font-size: 2.5rem;
-  border-bottom: 2px solid var(--secondary);
-  padding-bottom: 0.5rem;
+nav {
+  margin: 1rem 0;
 }
 
-a {
+nav a {
+  margin: 0 1rem;
   color: var(--accent);
-  transition: color 0.2s;
 }
 
-a:hover {
-  color: var(--primary);
+/* ===== Projects Grid ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
-/* ===== Components ===== */
+.project-card {
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Buttons ===== */
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: var(--primary);
+}
+
 #darkModeToggle {
   background: var(--accent);
   color: white;
@@ -71,17 +95,12 @@ a:hover {
   transform: scale(1.05);
 }
 
-.project-card {
-  border: 1px solid var(--secondary);
-  border-radius: 8px;
-  padding: 1.5rem;
-  background: var(--card-bg);
-  transition: all 0.3s;
-}
-
-/* ===== Mobile Responsiveness ===== */
+/* ===== Mobile ===== */
 @media (max-width: 768px) {
   body {
     padding: 1rem;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
   }
 }
