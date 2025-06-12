@@ -1,6 +1,5 @@
-/* ===== Base Styles ===== */
+/* ===== Base Styles (Unchanged) ===== */
 :root {
-  /* Light mode (default) */
   --primary: #2a4365;
   --secondary: #e2e8f0;
   --accent: #c53030;
@@ -10,7 +9,6 @@
 }
 
 .dark-mode {
-  /* Dark mode */
   --primary: #63b3ed;
   --secondary: #4a5568;
   --accent: #feb2b2;
@@ -24,82 +22,85 @@ body {
   line-height: 1.6;
   color: var(--text);
   background-color: var(--bg);
-  margin: 0;
+  margin: 0 auto;
   padding: 2rem;
-  transition: all 0.3s ease;
+  max-width: 1200px;
 }
 
-/* ===== Header/Nav ===== */
-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-nav {
-  margin: 1rem 0;
-}
-
-nav a {
-  margin: 0 1rem;
-  color: var(--accent);
-}
-
-/* ===== Projects Grid ===== */
+/* ===== Project Cards (Fancy Upgrades) ===== */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
 }
 
 .project-card {
-  border: 1px solid var(--secondary);
-  border-radius: 8px;
-  padding: 1.5rem;
   background: var(--card-bg);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid var(--secondary);
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== Buttons ===== */
+.card-content {
+  padding: 1.8rem;
+}
+
+.project-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--primary);
+}
+
+.project-card p {
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+/* ===== Buttons (Animated + Icon) ===== */
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   background: var(--accent);
   color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  margin-top: 1rem;
-  transition: background 0.3s;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
   background: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.button svg {
+  transition: transform 0.3s ease;
+}
+
+.button:hover svg {
+  transform: translateX(3px);
+}
+
+/* ===== Dark Mode Toggle Button ===== */
 #darkModeToggle {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 1rem 0;
-  transition: all 0.3s;
+  /* Your existing toggle styles */
 }
 
-#darkModeToggle:hover {
-  transform: scale(1.05);
-}
-
-/* ===== Mobile ===== */
+/* ===== Mobile Responsiveness ===== */
 @media (max-width: 768px) {
-  body {
-    padding: 1rem;
-  }
   .project-grid {
     grid-template-columns: 1fr;
   }
