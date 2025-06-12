@@ -112,3 +112,28 @@ header {
     grid-template-columns: 1fr;
   }
 }
+/* Dark Mode Toggle Button */
+#darkModeToggle {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: all 0.3s;
+}
+
+#darkModeToggle:hover {
+  transform: scale(1.05);
+}
+
+/* Forced dark mode class */
+.dark-mode {
+  --primary: #63b3ed !important;
+  --secondary: #4a5568 !important;
+  --accent: #feb2b2 !important;
+  --text: #e2e8f0 !important;
+  --bg: #2d3748 !important;
+  --card-bg: #4a5568 !important;
+}
